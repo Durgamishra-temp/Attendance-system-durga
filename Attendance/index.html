@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Management System</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="shortcut icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Premium Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader-bg-icon" id="loaderBgIcon"></div>
+        <div class="loader-container">
+            <div class="loader-ring"></div>
+            <div class="loader-ring-inner"></div>
+            <div class="loader-text">
+                <span class="loader-letter" style="--i:1">D</span>
+                <span class="loader-letter" style="--i:2">U</span>
+                <span class="loader-letter" style="--i:3">R</span>
+                <span class="loader-letter" style="--i:4">G</span>
+                <span class="loader-letter" style="--i:5">A</span>
+            </div>
+            <div class="loader-subtitle">Attendance Management System</div>
+            <div class="loader-bar">
+                <div class="loader-bar-fill" id="loaderBarFill"></div>
+            </div>
+            <div class="loader-percent" id="loaderPercent">0%</div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-icon">📋</span>
+                <h1>Attendance Management System</h1>
+            </div>
+            <div class="date-display">
+                <span id="currentDate"></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Controls Bar -->
+        <div class="controls-bar">
+            <div class="date-picker">
+                <label for="attendanceDate">Select Date:</label>
+                <input type="date" id="attendanceDate">
+            </div>
+            <div class="stats">
+                <div class="stat-card present-stat">
+                    <span class="stat-label">Present</span>
+                    <span class="stat-count" id="presentCount">0</span>
+                </div>
+                <div class="stat-card absent-stat">
+                    <span class="stat-label">Absent</span>
+                    <span class="stat-count" id="absentCount">0</span>
+                </div>
+                <div class="stat-card total-stat">
+                    <span class="stat-label">Total</span>
+                    <span class="stat-count" id="totalCount">53</span>
+                </div>
+            </div>
+            <div class="action-buttons">
+                <button class="btn btn-mark-all" id="markAllPresent">✅ Mark All Present</button>
+                <button class="btn btn-mark-all absent" id="markAllAbsent">❌ Mark All Absent</button>
+                <button class="btn btn-save" id="saveAttendance">💾 Save Attendance</button>
+                <button class="btn btn-copy" id="copyPresentList" style="display:none;">📋 Copy Present List</button>
+                <button class="btn btn-copy absent" id="copyAbsentList" style="display:none;">📋 Copy Absent List</button>
+            </div>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="🔍 Search for a student...">
+            <span class="search-results" id="searchResults">Showing 53 of 53 students</span>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div class="loading-spinner" id="loadingSpinner">
+            <div class="spinner"></div>
+            <p>Loading attendance data...</p>
+        </div>
+
+        <!-- Attendance Table -->
+        <div class="table-container" id="tableContainer">
+            <table class="attendance-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Student Name</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="attendanceBody">
+                    <!-- Data will be populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Save Notification -->
+        <div class="notification" id="notification">
+            <span class="notification-icon">✅</span>
+            <span class="notification-text" id="notificationText">Attendance saved successfully!</span>
+        </div>
+
+        <!-- History Button -->
+        <div class="footer-actions">
+            <button class="btn btn-history" id="viewHistory">📊 View Attendance History</button>
+        </div>
+    </div>
+
+    <!-- History Modal -->
+    <div class="modal-overlay" id="historyModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📊 Attendance History</h2>
+                <div class="modal-header-actions">
+                    <button class="btn btn-clear-all" id="clearAllHistory">🗑️ Clear All</button>
+                    <button class="modal-close" id="closeModal">&times;</button>
+                </div>
+            </div>
+            <div class="modal-body" id="historyBody">
+                <!-- History content loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
